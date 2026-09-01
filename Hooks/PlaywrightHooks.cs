@@ -24,7 +24,7 @@ public class PlaywrightHooks
 
         _browser = await _playwright.Chromium.LaunchAsync(new()
         {
-            Headless = false
+            Headless = Environment.GetEnvironmentVariable("CI") == "true"
         });
 
         var page = await _browser.NewPageAsync();
